@@ -40,8 +40,8 @@ from alibabacloud_tea_util import models as util_models
 # ============================================================
 # 配置
 # ============================================================
-ALIYUN_ACCESS_KEY_ID = "LTAI5t9nfB48Qbvi8fmU9jJW"
-ALIYUN_ACCESS_KEY_SECRET = "ADRDeu42z2IXlRx8593O1Y0QYmMwhK"
+ALIYUN_ACCESS_KEY_ID = "YOUR_ACCESS_KEY_ID"
+ALIYUN_ACCESS_KEY_SECRET = "YOUR_ACCESS_KEY_SECRET"
 ALIYUN_OCR_ENDPOINT = "ocr-api.cn-hangzhou.aliyuncs.com"
 ALIYUN_REGION_ID = "cn-hangzhou"
 
