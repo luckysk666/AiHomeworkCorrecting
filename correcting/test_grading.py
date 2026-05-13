@@ -1,6 +1,5 @@
 # test_grading.py - 不告诉AI答案，让AI自己判断
 import asyncio
-import base64
 from llm_grading import process_homework
 
 
@@ -34,7 +33,7 @@ async def main():
             "student_answer": "D",
             "max_score": 10,
             "subject_type": "history",
-            "bbox": [80, 200, 700, 280]  # 增大坐标，更准确
+            "bbox": [80, 200, 700, 280]
         },
         {
             "question_id": "Q2",
@@ -46,7 +45,7 @@ async def main():
             "student_answer": "B",
             "max_score": 10,
             "subject_type": "history",
-            "bbox": [80, 550, 700, 250]  # 调整Y坐标
+            "bbox": [80, 550, 700, 250]
         },
         {
             "question_id": "Q3",
@@ -58,7 +57,7 @@ async def main():
             "student_answer": "B",
             "max_score": 10,
             "subject_type": "history",
-            "bbox": [80, 880, 700, 230]  # 调整Y坐标
+            "bbox": [80, 880, 700, 230]
         }
     ]
 
@@ -72,15 +71,8 @@ async def main():
     if result["success"]:
         print(f"\n✅ AI批改完成!")
         print(f"📊 总分: {result['total_score']}/{result['total_max_score']} ({result['percentage']:.1f}%)")
-        print("\n📝 各题AI评语:")
-        for i, r in enumerate(result['grading_results'], 1):
-            print(f"  第{i}题: {r['comment']}")
-
-        # 保存批改后的图片
-        image_data = base64.b64decode(result['annotated_image'])
-        with open("graded_result.jpg", "wb") as f:
-            f.write(image_data)
-        print(f"\n📸 AI批改后的图片已保存为: graded_result.jpg")
+        print(f"\n📁 结果文件: {result.get('html_path', 'graded_result_interactive.html')}")
+        print(f"\n💡 用浏览器打开 HTML 文件即可查看交互式批改结果")
     else:
         print(f"\n❌ AI批改失败: {result.get('message', '未知错误')}")
 
